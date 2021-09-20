@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration debug="true" scan="true"
+	scanPeriod="10 seconds">
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!--<pattern>%date{ISO8601} [%thread] %-5level %20.50logger - %msg%n</pattern> -->
+			<!--log4j.appender.stdout.layout.ConversionPattern -->
+			<pattern>%date{ISO8601} | %-5.5p | %35.35c{1}:%-4L | %X{requestId} | %m%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="com.demo.virtualtopics" level="TRACE"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="org.springframework.security" level="INFO"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
